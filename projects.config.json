@@ -3,7 +3,7 @@
   "owner": {
     "name": "Ludovic Valente",
     "title": "Ingénieur logiciel fullstack · SFEIR Luxembourg",
-    "summary": "Développeur senior fullstack, architecte IT, formateur VueJs, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m'appuyant sur une architecture efficace.",
+    "summary": "Développeur senior fullstack, architecte IT, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m'appuyant sur une architecture efficace.",
     "location": "Luxembourg",
     "github": "https://github.com/ludoo0d0a",
     "linkedin": "https://www.linkedin.com/in/ludovicvalente/",
@@ -24,7 +24,7 @@
       "localPath": "/Users/ludovic/dev/android/scora",
       "links": {
         "demo": "https://scorawatch.com",
-        "github": "https://github.com/ludoo0d0a/scora",
+        "github": null,
         "store": "https://play.google.com/store/apps/details?id=fr.geoking.tennis.scoreboard.wear"
       }
     },
