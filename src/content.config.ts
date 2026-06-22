@@ -18,6 +18,7 @@ const projects = defineCollection({
 			})
 			.default({}),
 		image: z.string(),
+		imageFit: z.enum(['cover', 'contain']).default('cover'),
 		featured: z.boolean().default(true),
 		order: z.number(),
 	}),

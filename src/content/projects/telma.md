@@ -1,27 +1,28 @@
 ---
 title: Telma
 slug: telma
-tagline: Gestion et organisation
-description: Application pour organiser, planifier et garder le contrôle sur vos activités.
-tags: ['Android', 'Productivité']
+tagline: Horaires SNCF en temps réel
+description: "Application web pour consulter les horaires de train SNCF en temps réel : gares, trajets, départs et arrivées, avec carte interactive."
+tags: ['React', 'Vite', 'TypeScript', 'MapLibre GL']
 links:
   demo: https://telma.geoking.fr
   github: https://github.com/ludoo0d0a/telma
-image: /assets/projects/telma.svg
+image: /assets/projects/telma.png
+imageFit: contain
 featured: true
 order: 5
 ---
 
 ## Contexte
 
-Telma aide à structurer le quotidien avec des outils de planification et de suivi intégrés.
+Telma consulte les horaires des trains SNCF en temps réel : gares, trajets, départs et arrivées, avec une carte interactive.
 
-## Fonctionnalités
+## Points clés
 
-- Listes et organisation par catégories
-- Vue calendrier et rappels
-- Synchronisation et persistance locale
+- Données SNCF en temps réel
+- Recherche de gares et de trajets
+- Carte interactive
 
 ## Stack technique
 
-Kotlin, Android, Compose.
+React, Vite, TypeScript, MapLibre GL.

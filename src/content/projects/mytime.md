@@ -1,27 +1,27 @@
 ---
 title: MyTime
 slug: mytime
-tagline: Gestion du temps
-description: Application pour suivre, analyser et optimiser la façon dont vous utilisez votre temps.
-tags: ['Android', 'Kotlin', 'Productivité']
+tagline: Emploi du temps scolaire intelligent
+description: "Application web de gestion d'emplois du temps scolaires : un solveur de contraintes assisté par IA génère et ajuste les horaires, avec verrouillage manuel des créneaux."
+tags: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Supabase']
 links:
   demo: https://mytime-hr7a.onrender.com
   github: https://github.com/ludoo0d0a/mytime
-image: /assets/projects/mytime.svg
+image: /assets/projects/mytime.png
 featured: true
 order: 6
 ---
 
 ## Contexte
 
-MyTime répond au besoin de mieux comprendre et maîtriser son emploi du temps.
+MyTime gère les emplois du temps scolaires : un solveur de contraintes assisté par IA génère et ajuste les horaires, avec verrouillage manuel des créneaux.
 
-## Fonctionnalités
+## Points clés
 
-- Chronométrage et catégorisation des activités
-- Statistiques et rapports visuels
-- Objectifs et suivi de progression
+- Génération automatique sous contraintes
+- Verrouillage manuel et réajustement
+- Gestion des ressources (salles, bâtiments)
 
 ## Stack technique
 
-Kotlin, Jetpack Compose, graphiques et stockage local.
+Next.js, React, TypeScript, TailwindCSS, Supabase.

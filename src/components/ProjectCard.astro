@@ -6,11 +6,11 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, tagline, description, tags, image, slug } = project.data;
+const { title, tagline, description, tags, image, slug, imageFit } = project.data;
 ---
 
 <a href={`/projects/${slug}`} class="card">
-	<div class="card-image">
+	<div class:list={["card-image", { "card-image--contain": imageFit === "contain" }]}>
 		<img src={image} alt="" width="400" height="225" loading="lazy" />
 	</div>
 	<div class="card-body">
@@ -49,6 +49,9 @@ const { title, tagline, description, tags, image, slug } = project.data;
 		background: var(--bg-elevated);
 		overflow: hidden;
 	}
+
+	.card-image.card-image--contain { display: grid; place-items: center; background: var(--bg); }
+	.card-image.card-image--contain img { width: auto; height: 70%; object-fit: contain; }
 
 	.card-image img {
 		width: 100%;
