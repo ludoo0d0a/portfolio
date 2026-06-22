@@ -6,7 +6,6 @@ description: "Application Android de comptage et d'affichage des scores de tenni
 tags: ['Kotlin', 'Jetpack Compose', 'Wear OS', 'Material 3', 'Firebase']
 links:
   demo: https://scorawatch.com
-  github: https://github.com/ludoo0d0a/scora
   store: https://play.google.com/store/apps/details?id=fr.geoking.tennis.scoreboard.wear
 image: /assets/projects/scora.png
 imageFit: contain
