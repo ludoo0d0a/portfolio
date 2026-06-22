@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page introuvable">
+	<section class="not-found">
+		<div class="container">
+			<h1>404</h1>
+			<p>Cette page n’existe pas.</p>
+			<a href="/" class="btn btn-primary">Retour à l’accueil</a>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.not-found {
+		padding-block: 8rem;
+		text-align: center;
+	}
+
+	.not-found h1 {
+		font-size: 4rem;
+		margin: 0 0 0.5rem;
+		color: var(--accent);
+	}
+
+	.not-found p {
+		color: var(--text-muted);
+		margin: 0 0 2rem;
+	}
+</style>

@@ -1,17 +1,103 @@
 ---
-
+import Base from '../layouts/Base.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import CvSection from '../components/CvSection.astro';
+import { cv, cvUrl } from '../data/cv';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Accueil" description={`Portfolio de ${cv.name} — projets personnels et CV`}>
+	<section class="hero">
+		<div class="container hero-inner">
+			<p class="hero-label">Portfolio</p>
+			<h1>{cv.name}</h1>
+			<p class="hero-title">{cv.title}</p>
+			<p class="hero-desc">{cv.summary}</p>
+			<div class="hero-actions">
+				<a href="#projets" class="btn btn-primary">Voir mes projets</a>
+				<a href={cvUrl} class="btn" target="_blank" rel="noopener noreferrer">Mon CV</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="projets">
+		<div class="container">
+			<h2 class="section-title">Projets</h2>
+			<p class="section-subtitle">Applications et outils que j’ai conçus</p>
+			<ProjectGrid />
+		</div>
+	</section>
+
+	<section class="section">
+		<CvSection compact />
+	</section>
+
+	<section class="section contact" id="contact">
+		<div class="container">
+			<h2 class="section-title">Contact</h2>
+			<p class="section-subtitle">Discutons de votre prochain projet</p>
+			<div class="contact-links">
+				<a href={`mailto:${cv.email}`} class="btn btn-primary">{cv.email}</a>
+				<a href={cv.links.github} class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a href={cv.links.linkedin} class="btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.hero {
+		padding-block: 6rem 4rem;
+		background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
+	}
+
+	.hero-inner {
+		max-width: 38rem;
+	}
+
+	.hero-label {
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--accent);
+		margin: 0 0 1rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.5rem, 6vw, 3.5rem);
+		font-weight: 700;
+		margin: 0 0 0.5rem;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.hero-title {
+		font-size: 1.25rem;
+		color: var(--text-muted);
+		margin: 0 0 1.25rem;
+		font-weight: 500;
+	}
+
+	.hero-desc {
+		color: var(--text-muted);
+		font-size: 1.05rem;
+		line-height: 1.7;
+		margin: 0 0 2rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.contact {
+		background: var(--bg-elevated);
+	}
+
+	.contact-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+</style>

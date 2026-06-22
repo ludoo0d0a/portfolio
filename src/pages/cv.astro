@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { cv, cvUrl } from '../data/cv';
+---
+
+<Base title="CV" description={`Curriculum vitae de ${cv.name}`}>
+	<meta http-equiv="refresh" content={`0;url=${cvUrl}`} slot="head" />
+	<link rel="canonical" href={cvUrl} slot="head" />
+	<section class="cv-redirect">
+		<div class="container">
+			<p>Redirection vers le CV…</p>
+			<a href={cvUrl} class="btn btn-primary">Ouvrir ludovicvalente.geoking.fr</a>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.cv-redirect {
+		padding-block: 8rem;
+		text-align: center;
+	}
+
+	.cv-redirect p {
+		color: var(--text-muted);
+		margin: 0 0 1.5rem;
+	}
+</style>

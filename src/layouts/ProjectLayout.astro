@@ -1,0 +1,141 @@
+---
+import Base from './Base.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, tagline, tags, links, image } = project.data;
+---
+
+<Base title={title} description={tagline}>
+	<article class="project-page">
+		<div class="container">
+			<a href="/#projets" class="back-link">&larr; Tous les projets</a>
+
+			<header class="project-header">
+				<div class="project-meta">
+					<h1>{title}</h1>
+					<p class="tagline">{tagline}</p>
+					<div class="tags">
+						{tags.map((tag) => <span class="tag">{tag}</span>)}
+					</div>
+					<div class="links">
+						{links.demo && (
+							<a href={links.demo} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+								Démo
+							</a>
+						)}
+						{links.github && (
+							<a href={links.github} class="btn" target="_blank" rel="noopener noreferrer">
+								GitHub
+							</a>
+						)}
+						{links.store && (
+							<a href={links.store} class="btn" target="_blank" rel="noopener noreferrer">
+								Store
+							</a>
+						)}
+					</div>
+				</div>
+				<div class="project-image">
+					<img src={image} alt={`Capture d'écran de ${title}`} width="640" height="360" />
+				</div>
+			</header>
+
+			<div class="project-content">
+				<slot />
+			</div>
+		</div>
+	</article>
+</Base>
+
+<style>
+	.project-page {
+		padding-block: 3rem 4rem;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 2rem;
+		color: var(--text-muted);
+		font-size: 0.95rem;
+	}
+
+	.back-link:hover {
+		color: var(--accent);
+	}
+
+	.project-header {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
+		margin-bottom: 3rem;
+	}
+
+	@media (max-width: 768px) {
+		.project-header {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.project-meta h1 {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		font-weight: 700;
+		margin: 0 0 0.5rem;
+		letter-spacing: -0.03em;
+	}
+
+	.tagline {
+		color: var(--text-muted);
+		font-size: 1.15rem;
+		margin: 0 0 1.25rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.project-image {
+		border-radius: var(--radius);
+		overflow: hidden;
+		border: 1px solid var(--border);
+		background: var(--bg-card);
+	}
+
+	.project-content {
+		max-width: 42rem;
+	}
+
+	.project-content :global(h2) {
+		font-size: 1.35rem;
+		margin: 2rem 0 0.75rem;
+	}
+
+	.project-content :global(p) {
+		color: var(--text-muted);
+		margin: 0 0 1rem;
+	}
+
+	.project-content :global(ul) {
+		color: var(--text-muted);
+		padding-left: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.project-content :global(li) {
+		margin-bottom: 0.35rem;
+	}
+</style>

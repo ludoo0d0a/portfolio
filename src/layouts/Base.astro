@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import { cv, cvUrl } from '../data/cv';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'Portfolio de projets personnels' } = Astro.props;
+const fullTitle = title === 'Accueil' ? 'Ludovic — Portfolio' : `${title} — Ludovic`;
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{fullTitle}</title>
+		<slot name="head" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="container header-inner">
+				<a href="/" class="logo">{cv.name}</a>
+				<nav class="nav" aria-label="Navigation principale">
+					<a href="/#projets">Projets</a>
+					<a href={cvUrl} target="_blank" rel="noopener noreferrer">CV</a>
+					<a href="/#contact">Contact</a>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="footer">
+			<div class="container footer-inner">
+				<p>&copy; {new Date().getFullYear()} {cv.name}</p>
+				<div class="footer-links">
+					<a href={cv.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a href={cv.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(12, 15, 20, 0.85);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 4rem;
+	}
+
+	.logo {
+		font-weight: 700;
+		font-size: 1.15rem;
+		color: var(--text);
+		letter-spacing: -0.02em;
+	}
+
+	.logo:hover {
+		color: var(--accent);
+	}
+
+	.nav {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.nav a {
+		color: var(--text-muted);
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	.nav a:hover {
+		color: var(--text);
+	}
+
+	.footer {
+		border-top: 1px solid var(--border);
+		padding-block: 2rem;
+		margin-top: 2rem;
+	}
+
+	.footer-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.footer p {
+		margin: 0;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 1.25rem;
+	}
+
+	.footer-links a {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+	}
+
+	.footer-links a:hover {
+		color: var(--accent);
+	}
+</style>

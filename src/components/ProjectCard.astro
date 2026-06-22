@@ -1,0 +1,92 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, tagline, description, tags, image, slug } = project.data;
+---
+
+<a href={`/projects/${slug}`} class="card">
+	<div class="card-image">
+		<img src={image} alt="" width="400" height="225" loading="lazy" />
+	</div>
+	<div class="card-body">
+		<h3>{title}</h3>
+		<p class="tagline">{tagline}</p>
+		<p class="description">{description}</p>
+		<div class="tags">
+			{tags.slice(0, 3).map((tag) => (
+				<span class="tag">{tag}</span>
+			))}
+		</div>
+	</div>
+</a>
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		transition: border-color 0.2s ease, transform 0.2s ease;
+		color: inherit;
+		height: 100%;
+	}
+
+	.card:hover {
+		border-color: var(--accent);
+		transform: translateY(-2px);
+		color: inherit;
+	}
+
+	.card-image {
+		aspect-ratio: 16 / 9;
+		background: var(--bg-elevated);
+		overflow: hidden;
+	}
+
+	.card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.card-body {
+		padding: 1.25rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card-body h3 {
+		margin: 0 0 0.35rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+	}
+
+	.tagline {
+		margin: 0 0 0.5rem;
+		font-size: 0.9rem;
+		color: var(--accent);
+		font-weight: 500;
+	}
+
+	.description {
+		margin: 0 0 1rem;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		flex: 1;
+		line-height: 1.5;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+</style>

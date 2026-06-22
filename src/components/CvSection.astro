@@ -1,0 +1,149 @@
+---
+import { cv, cvUrl, cvPdfUrl } from '../data/cv';
+
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const topSkills = [
+	...cv.skills.languages.slice(0, 3),
+	...cv.skills.mobile.slice(0, 2),
+];
+---
+
+<section class:list={['cv-section', { compact }]} id={compact ? undefined : 'cv'}>
+	<div class="container">
+		{compact ? (
+			<>
+				<h2 class="section-title">À propos</h2>
+				<p class="section-subtitle">Un aperçu de mon parcours</p>
+			</>
+		) : (
+			<h2 class="section-title">Curriculum vitae</h2>
+		)}
+
+		<div class="cv-card">
+			<div class="cv-intro">
+				<p class="summary">{cv.summary}</p>
+				{compact && (
+					<div class="skills-preview">
+						{topSkills.map((skill) => (
+							<span class="tag">{skill}</span>
+						))}
+					</div>
+				)}
+				<div class="actions">
+					{compact && (
+						<a href={cvUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+							Voir mon CV
+						</a>
+					)}
+					<a href={cvPdfUrl} class="btn" target="_blank" rel="noopener noreferrer">
+						Télécharger le PDF
+					</a>
+				</div>
+			</div>
+
+			{!compact && (
+				<div class="cv-details">
+					<div class="block">
+						<h3>Compétences</h3>
+						<div class="skill-group">
+							<h4>Langages</h4>
+							<div class="tags">
+								{cv.skills.languages.map((s) => <span class="tag">{s}</span>)}
+							</div>
+						</div>
+						<div class="skill-group">
+							<h4>Mobile</h4>
+							<div class="tags">
+								{cv.skills.mobile.map((s) => <span class="tag">{s}</span>)}
+							</div>
+						</div>
+						<div class="skill-group">
+							<h4>Outils</h4>
+							<div class="tags">
+								{cv.skills.tools.map((s) => <span class="tag">{s}</span>)}
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+		</div>
+	</div>
+</section>
+
+<style>
+	.cv-section {
+		background: var(--bg-elevated);
+	}
+
+	.cv-section.compact {
+		background: transparent;
+	}
+
+	.cv-card {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2.5rem;
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+
+	.compact .cv-card {
+		grid-template-columns: 1fr;
+	}
+
+	@media (max-width: 768px) {
+		.cv-card {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.summary {
+		color: var(--text-muted);
+		margin: 0 0 1.25rem;
+		font-size: 1.05rem;
+		line-height: 1.7;
+	}
+
+	.skills-preview {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.block h3 {
+		margin: 0 0 1.25rem;
+		font-size: 1.1rem;
+	}
+
+	.skill-group {
+		margin-bottom: 1.25rem;
+	}
+
+	.skill-group h4 {
+		margin: 0 0 0.5rem;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+</style>

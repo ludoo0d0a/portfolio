@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/cv"
+  to = "https://ludovicvalente.geoking.fr"
+  status = 302
+  force = true
