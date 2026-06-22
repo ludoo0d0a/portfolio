@@ -27,18 +27,15 @@ import { cv, cvUrl } from '../data/cv';
 		</div>
 	</section>
 
-	<section class="section">
-		<CvSection compact />
-	</section>
+	<CvSection />
 
 	<section class="section contact" id="contact">
 		<div class="container">
 			<h2 class="section-title">Contact</h2>
 			<p class="section-subtitle">Discutons de votre prochain projet</p>
 			<div class="contact-links">
-				<a href={`mailto:${cv.email}`} class="btn btn-primary">{cv.email}</a>
+				<a href={cv.links.linkedin} class="btn btn-primary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 				<a href={cv.links.github} class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
-				<a href={cv.links.linkedin} class="btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 			</div>
 		</div>
 	</section>

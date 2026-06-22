@@ -1,27 +1,27 @@
 ---
 title: Vincent
 slug: vincent
-tagline: Projet personnel Vincent
-description: Application dédiée à un cas d’usage spécifique, développée de bout en bout.
-tags: ['Android', 'Mobile']
+tagline: Gérez votre cave à vin
+description: "Inventorie et range vos bouteilles par scan, photo, code-barres ou dictée vocale : l'IA reconnaît l'étiquette, estime le prix et suggère des accords mets-vin."
+tags: ['Kotlin Multiplatform', 'Compose', 'Material 3', 'Gemini AI', 'Room']
 links:
   demo: https://vincent.geoking.fr
   github: https://github.com/ludoo0d0a/vincent
-image: /assets/projects/vincent.svg
+image: /assets/projects/vincent.png
 featured: true
 order: 3
 ---
 
 ## Contexte
 
-Vincent est un projet personnel explorant un domaine métier particulier avec une solution mobile dédiée.
+Vincent inventorie et range vos bouteilles de vin par scan, photo, code-barres ou dictée vocale. L'IA reconnaît l'étiquette, estime le prix et suggère des accords mets-vin, sur un plan visuel « type block ».
 
-## Fonctionnalités
+## Points clés
 
-- Parcours utilisateur ciblé
-- Gestion de données structurées
-- Design adapté au contexte d’usage
+- Reconnaissance d'étiquette et estimation de prix par IA (Gemini)
+- Plan de cave visuel et recherche fine
+- Import CSV (PLOC/Vivino), connexion Google
 
 ## Stack technique
 
-Kotlin, Android.
+Kotlin Multiplatform, Compose, Material 3, Gemini AI, Room.

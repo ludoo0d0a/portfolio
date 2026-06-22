@@ -1,149 +1,107 @@
 ---
 import { cv, cvUrl, cvPdfUrl } from '../data/cv';
-
-interface Props {
-	compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
-const topSkills = [
-	...cv.skills.languages.slice(0, 3),
-	...cv.skills.mobile.slice(0, 2),
-];
 ---
 
-<section class:list={['cv-section', { compact }]} id={compact ? undefined : 'cv'}>
+<section class="section cv-section" id="parcours">
 	<div class="container">
-		{compact ? (
-			<>
-				<h2 class="section-title">À propos</h2>
-				<p class="section-subtitle">Un aperçu de mon parcours</p>
-			</>
-		) : (
-			<h2 class="section-title">Curriculum vitae</h2>
-		)}
+		<h2 class="section-title">Parcours</h2>
+		<p class="section-subtitle">25 ans d’ingénierie logicielle — des institutions européennes à la finance luxembourgeoise</p>
 
-		<div class="cv-card">
-			<div class="cv-intro">
+		<div class="cv-grid">
+			<div class="cv-main">
 				<p class="summary">{cv.summary}</p>
-				{compact && (
-					<div class="skills-preview">
-						{topSkills.map((skill) => (
-							<span class="tag">{skill}</span>
-						))}
-					</div>
-				)}
-				<div class="actions">
-					{compact && (
-						<a href={cvUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-							Voir mon CV
-						</a>
-					)}
-					<a href={cvPdfUrl} class="btn" target="_blank" rel="noopener noreferrer">
-						Télécharger le PDF
-					</a>
-				</div>
+
+				<ol class="timeline">
+					{cv.experience.map((job) => (
+						<li class="tl-item">
+							<div class="tl-head">
+								<h3>{job.company} <span class="tl-loc">{job.location}</span></h3>
+								<span class="tl-period">{job.period}</span>
+							</div>
+							<p class="tl-tagline">{job.role}</p>
+							<div class="chip-row">
+								<span class="chip-label">Clients</span>
+								{job.clients.map((c) => <span class="chip">{c}</span>)}
+							</div>
+							<div class="tags">
+								{job.tags.map((t) => <span class="tag">{t}</span>)}
+							</div>
+						</li>
+					))}
+				</ol>
 			</div>
 
-			{!compact && (
-				<div class="cv-details">
-					<div class="block">
-						<h3>Compétences</h3>
-						<div class="skill-group">
-							<h4>Langages</h4>
-							<div class="tags">
-								{cv.skills.languages.map((s) => <span class="tag">{s}</span>)}
-							</div>
-						</div>
-						<div class="skill-group">
-							<h4>Mobile</h4>
-							<div class="tags">
-								{cv.skills.mobile.map((s) => <span class="tag">{s}</span>)}
-							</div>
-						</div>
-						<div class="skill-group">
-							<h4>Outils</h4>
-							<div class="tags">
-								{cv.skills.tools.map((s) => <span class="tag">{s}</span>)}
-							</div>
-						</div>
+			<aside class="cv-aside">
+				<img class="cv-logo" src="/assets/logo.png" alt="Ludovic Valente" width="384" height="256" loading="lazy" />
+				{cv.skills.map((group) => (
+					<div class="skill-group">
+						<h4>{group.name}</h4>
+						<div class="tags">{group.items.map((s) => <span class="tag">{s}</span>)}</div>
 					</div>
+				))}
+				<div class="cv-block">
+					<h4>Formation</h4>
+					{cv.education.map((e) => (
+						<p class="cv-block-line"><strong>{e.school}</strong><br />{e.degree}<br /><span class="muted">{e.period}</span></p>
+					))}
 				</div>
-			)}
+				<div class="cv-block">
+					<h4>Langues</h4>
+					<ul class="lang-list">
+						{cv.languages.map((l) => (
+							<li><span>{l.name}</span><span class="lvl">{l.level}</span></li>
+						))}
+					</ul>
+				</div>
+				<div class="cv-block">
+					<h4>Centres d’intérêt</h4>
+					<div class="tags">{cv.interests.map((i) => <span class="tag">{i}</span>)}</div>
+				</div>
+				<div class="actions">
+					<a href={cvUrl} class="btn btn-primary" target="_blank" rel="noopener noreferrer">Voir mon CV</a>
+					<a href={cvPdfUrl} class="btn" target="_blank" rel="noopener noreferrer">CV en PDF</a>
+				</div>
+			</aside>
 		</div>
 	</div>
 </section>
 
 <style>
-	.cv-section {
-		background: var(--bg-elevated);
-	}
+	.cv-section { background: var(--bg-elevated); }
+	.cv-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+	.summary { color: var(--text-muted); margin: 0 0 2rem; font-size: 1.05rem; line-height: 1.7; }
 
-	.cv-section.compact {
-		background: transparent;
-	}
+	.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+	.timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+	.tl-item { position: relative; padding: 0 0 1.5rem 1.75rem; }
+	.tl-item:last-child { padding-bottom: 0; }
+	.tl-item::before { content: ''; position: absolute; left: 1px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg-elevated); border: 2px solid var(--accent); }
+	.tl-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; }
+	.tl-head h3 { margin: 0; font-size: 1.15rem; font-weight: 600; }
+	.tl-loc { font-size: .82rem; font-weight: 500; color: var(--text-muted); }
+	.tl-period { font-size: .82rem; color: var(--accent); font-weight: 500; white-space: nowrap; }
+	.tl-tagline { margin: .15rem 0 .6rem; font-size: .92rem; line-height: 1.5; color: var(--text); }
 
-	.cv-card {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2.5rem;
-		padding: 2rem;
-		background: var(--bg-card);
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-	}
+	.chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: 0 0 .6rem; }
+	.chip-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); font-weight: 600; margin-right: .15rem; }
+	.chip { display: inline-block; padding: .18rem .55rem; font-size: .8rem; border-radius: 6px; background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+	.tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-	.compact .cv-card {
-		grid-template-columns: 1fr;
-	}
+	.cv-aside { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; position: sticky; top: 5rem; }
+	.cv-logo { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+	.skill-group { margin-bottom: 1.25rem; }
+	.skill-group h4, .cv-block h4 { margin: 0 0 .6rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 500; }
+	.cv-block { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+	.cv-block-line { margin: 0; font-size: .92rem; line-height: 1.55; }
+	.muted { color: var(--text-muted); font-size: .85rem; }
+	.lang-list { display: flex; flex-direction: column; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+	.lang-list li { display: flex; justify-content: space-between; font-size: .92rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+	.lang-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+	.lang-list .lvl { color: var(--text-muted); }
+	.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
 
-	@media (max-width: 768px) {
-		.cv-card {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	.summary {
-		color: var(--text-muted);
-		margin: 0 0 1.25rem;
-		font-size: 1.05rem;
-		line-height: 1.7;
-	}
-
-	.skills-preview {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-	}
-
-	.block h3 {
-		margin: 0 0 1.25rem;
-		font-size: 1.1rem;
-	}
-
-	.skill-group {
-		margin-bottom: 1.25rem;
-	}
-
-	.skill-group h4 {
-		margin: 0 0 0.5rem;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: var(--text-muted);
-		font-weight: 500;
-	}
-
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
+	@media (max-width: 920px) {
+		.cv-grid { grid-template-columns: 1fr; gap: 2rem; }
+		.cv-aside { position: static; }
 	}
 </style>

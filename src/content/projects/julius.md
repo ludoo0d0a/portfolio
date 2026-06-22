@@ -1,26 +1,26 @@
 ---
 title: Julius
 slug: julius
-tagline: Assistant intelligent
-description: Outil mobile combinant automatisation et interface conversationnelle.
-tags: ['Android', 'Kotlin', 'IA']
+tagline: Assistant vocal IA, Android & Auto
+description: "Assistant vocal mains-libres pour Android et Android Auto, branché sur plusieurs moteurs d'IA (Gemini, OpenAI, Perplexity) ou un mode embarqué hors-ligne."
+tags: ['Kotlin', 'Compose', 'Android Auto', 'KMP', 'Voice AI']
 links:
   github: https://github.com/ludoo0d0a/julius
-image: /assets/projects/julius.svg
+image: /assets/projects/julius.png
 featured: true
 order: 4
 ---
 
 ## Contexte
 
-Julius explore l’intégration d’assistants intelligents dans une expérience mobile native.
+Julius est un assistant vocal mains-libres pour Android et Android Auto, branché sur plusieurs moteurs d'IA ou un mode embarqué hors-ligne.
 
-## Fonctionnalités
+## Points clés
 
-- Interaction naturelle avec l’utilisateur
-- Traitement et structuration des entrées
-- Architecture modulaire et extensible
+- Interaction vocale sur téléphone et en voiture (Android Auto)
+- Choix du moteur : Gemini, OpenAI, Perplexity ou hors-ligne
+- Architecture Kotlin Multiplatform
 
 ## Stack technique
 
-Kotlin, Android, intégration API.
+Kotlin, Compose, Android Auto, KMP, Voice AI.

@@ -1,9 +1,9 @@
 ---
 title: Resume
 slug: resume
-tagline: Créateur de CV
-description: Outil pour générer et personnaliser un curriculum vitae professionnel.
-tags: ['Web', 'TypeScript', 'Productivité']
+tagline: CV multilingue depuis un JSON
+description: "Outil Node.js qui génère un CV en HTML, PDF et format Europass, en français et en anglais, à partir d'une seule source JSON (standard JSON Resume)."
+tags: ['Node.js', 'JSON Resume', 'Handlebars', 'Europass', 'i18n']
 links:
   demo: https://ludovicvalente.geoking.fr
   github: https://github.com/ludoo0d0a/resume
@@ -14,14 +14,14 @@ order: 7
 
 ## Contexte
 
-Resume est un projet dédié à la création de CV : structurer son parcours, choisir un format et exporter un document prêt à l’emploi.
+Resume génère un CV en HTML, PDF et format Europass, en français et en anglais, à partir d'une seule source JSON (standard JSON Resume).
 
-## Fonctionnalités
+## Points clés
 
-- Édition structurée des sections (expérience, compétences, formation)
-- Aperçu en temps réel
-- Export PDF
+- Source unique JSON, sorties multiples (HTML, PDF, Europass)
+- Multilingue (FR/EN)
+- Publication automatique via GitHub Actions
 
 ## Stack technique
 
-TypeScript, interface web responsive, génération de documents.
+Node.js, JSON Resume, Handlebars, i18n.
