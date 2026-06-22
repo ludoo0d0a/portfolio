@@ -7,7 +7,7 @@ export const cv = {
 		linkedin: 'https://www.linkedin.com/in/ludovicvalente/',
 	},
 	summary:
-		'Développeur senior fullstack, architecte IT, formateur VueJs, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m’appuyant sur une architecture efficace.',
+		'Développeur senior fullstack, architecte IT, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m’appuyant sur une architecture efficace.',
 	experience: [
 		{
 			company: 'SFEIR',
