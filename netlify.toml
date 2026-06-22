@@ -1,0 +1,25 @@
+# Prototype statique : index.html + assets/ sont déjà à la racine,
+# aucun build à exécuter — on publie le dossier tel quel.
+[build]
+  publish = "."
+
+# Reprise de la redirection du portfolio d'origine
+[[redirects]]
+  from = "/cv"
+  to = "https://ludovicvalente.geoking.fr"
+  status = 302
+  force = true
+
+# Mise en cache longue des visuels de projets (immutables)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# En-têtes de sécurité raisonnables pour un site vitrine
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"

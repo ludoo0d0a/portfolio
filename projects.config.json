@@ -1,0 +1,128 @@
+{
+  "$schema": "Configuration des projets du portfolio — source unique pour textes, liens, chemins locaux et assets. Réindexé depuis les dépôts locaux.",
+  "owner": {
+    "name": "Ludovic Valente",
+    "title": "Ingénieur logiciel fullstack · SFEIR Luxembourg",
+    "summary": "Développeur senior fullstack, architecte IT, formateur VueJs, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m'appuyant sur une architecture efficace.",
+    "location": "Luxembourg",
+    "github": "https://github.com/ludoo0d0a",
+    "linkedin": "https://www.linkedin.com/in/ludovicvalente/",
+    "cv": "https://ludovicvalente.geoking.fr",
+    "cvPdf": "https://ludovicvalente.geoking.fr/pdf/resume-fr.pdf",
+    "localPath": "/Users/ludovic/dev/www/portfolio"
+  },
+  "projects": [
+    {
+      "slug": "scora",
+      "name": "Scora",
+      "order": 1,
+      "tagline": "Score de tennis multi-plateforme",
+      "description": "Application Android de comptage et d'affichage des scores de tennis (jeux, sets, tie-breaks), avec une version dédiée à la montre connectée Wear OS.",
+      "image": "assets/projects/scora.png",
+      "imageFit": "contain",
+      "tags": ["Kotlin", "Jetpack Compose", "Wear OS", "Material 3", "Firebase"],
+      "localPath": "/Users/ludovic/dev/android/scora",
+      "links": {
+        "demo": "https://scorawatch.com",
+        "github": "https://github.com/ludoo0d0a/scora",
+        "store": "https://play.google.com/store/apps/details?id=fr.geoking.tennis.scoreboard.wear"
+      }
+    },
+    {
+      "slug": "gaston",
+      "name": "Gaston",
+      "order": 2,
+      "tagline": "Carburant & recharge EV en direct",
+      "description": "Trouve les meilleurs prix de carburant, les bornes de recharge électrique et les haltes le long de l'itinéraire — sur le téléphone et dans la voiture via Android Auto.",
+      "image": "assets/projects/gaston.png",
+      "imageFit": "cover",
+      "tags": ["Kotlin", "Compose", "Android Auto", "Ktor", "MapLibre"],
+      "localPath": "/Users/ludovic/dev/android/_auto/gaston",
+      "links": {
+        "demo": "https://gaston.geoking.fr",
+        "github": "https://github.com/ludoo0d0a/gaston",
+        "store": "https://play.google.com/store/apps/details?id=fr.geoking.gaston"
+      }
+    },
+    {
+      "slug": "vincent",
+      "name": "Vincent",
+      "order": 3,
+      "tagline": "Gérez votre cave à vin",
+      "description": "Inventorie et range vos bouteilles par scan, photo, code-barres ou dictée vocale : l'IA reconnaît l'étiquette, estime le prix et suggère des accords mets-vin sur un plan visuel de cave.",
+      "image": "assets/projects/vincent.png",
+      "imageFit": "cover",
+      "tags": ["Kotlin Multiplatform", "Compose", "Material 3", "Gemini AI", "Room"],
+      "localPath": "/Users/ludovic/dev/android/vincent",
+      "links": {
+        "demo": "https://vincent.geoking.fr",
+        "github": "https://github.com/ludoo0d0a/vincent",
+        "store": null
+      }
+    },
+    {
+      "slug": "julius",
+      "name": "Julius",
+      "order": 4,
+      "tagline": "Assistant vocal IA, Android & Auto",
+      "description": "Assistant vocal mains-libres pour Android et Android Auto, branché sur plusieurs moteurs d'IA (Gemini, OpenAI, Perplexity) ou un mode embarqué hors-ligne.",
+      "image": "assets/projects/julius.png",
+      "imageFit": "cover",
+      "tags": ["Kotlin", "Compose", "Android Auto", "KMP", "Voice AI"],
+      "localPath": "/Users/ludovic/dev/android/_auto/julius",
+      "links": {
+        "demo": null,
+        "github": "https://github.com/ludoo0d0a/julius",
+        "store": null
+      }
+    },
+    {
+      "slug": "telma",
+      "name": "Telma",
+      "order": 5,
+      "tagline": "Horaires SNCF en temps réel",
+      "description": "Application web pour consulter les horaires de train SNCF en temps réel : gares, trajets, départs et arrivées, avec carte interactive.",
+      "image": "assets/projects/telma.png",
+      "imageFit": "contain",
+      "tags": ["React", "Vite", "TypeScript", "MapLibre GL"],
+      "localPath": "/Users/ludovic/dev/_geoking.fr/telma",
+      "links": {
+        "demo": "https://telma.geoking.fr",
+        "github": "https://github.com/ludoo0d0a/telma",
+        "store": null
+      }
+    },
+    {
+      "slug": "mytime",
+      "name": "MyTime",
+      "order": 6,
+      "tagline": "Emploi du temps scolaire intelligent",
+      "description": "Application web de gestion d'emplois du temps scolaires : un solveur de contraintes assisté par IA génère et ajuste les horaires, avec verrouillage manuel des créneaux.",
+      "image": "assets/projects/mytime.png",
+      "imageFit": "cover",
+      "tags": ["Next.js", "React", "TypeScript", "TailwindCSS", "Supabase"],
+      "localPath": "/Users/ludovic/dev/node/mytime",
+      "links": {
+        "demo": "https://mytime-hr7a.onrender.com",
+        "github": "https://github.com/ludoo0d0a/mytime",
+        "store": null
+      }
+    },
+    {
+      "slug": "resume",
+      "name": "Resume",
+      "order": 7,
+      "tagline": "CV multilingue depuis un JSON",
+      "description": "Outil Node.js qui génère un CV en HTML, PDF et format Europass, en français et en anglais, à partir d'une seule source JSON (standard JSON Resume).",
+      "image": "assets/projects/resume.svg",
+      "imageFit": "cover",
+      "tags": ["Node.js", "JSON Resume", "Handlebars", "Europass", "i18n"],
+      "localPath": "/Users/ludovic/dev/node/resume",
+      "links": {
+        "demo": "https://ludovicvalente.geoking.fr",
+        "github": "https://github.com/ludoo0d0a/resume",
+        "store": null
+      }
+    }
+  ]
+}

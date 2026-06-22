@@ -1,0 +1,485 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ludovic Valente — Portfolio</title>
+<meta name="description" content="Portfolio de Ludovic Valente — développeur mobile & full-stack. Projets personnels et CV." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0c0f14;
+    --bg-elevated: #141a24;
+    --bg-card: #1a2230;
+    --border: #2a3548;
+    --text: #e8edf5;
+    --text-muted: #8b9bb4;
+    --accent: #5b9fd4;
+    --accent-hover: #7ab8e8;
+    --radius: 12px;
+    --max-width: 1100px;
+    --font: 'DM Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--accent); text-decoration: none; transition: color .15s ease; }
+  a:hover { color: var(--accent-hover); }
+
+  .container { width: min(100% - 2rem, var(--max-width)); margin-inline: auto; }
+  .section { padding-block: 4rem; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; margin: 0 0 .5rem; letter-spacing: -.02em; }
+  .section-subtitle { color: var(--text-muted); margin: 0 0 2.5rem; font-size: 1.05rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .65rem 1.25rem; border-radius: 8px;
+    font-size: .95rem; font-weight: 500;
+    border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+    cursor: pointer; transition: background .15s ease, border-color .15s ease, color .15s ease;
+    font-family: inherit;
+  }
+  .btn:hover { background: var(--bg-elevated); border-color: var(--accent); color: var(--text); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #0c0f14; }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #0c0f14; }
+
+  .tag {
+    display: inline-block; padding: .2rem .6rem;
+    font-size: .75rem; font-weight: 500; border-radius: 6px;
+    background: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border);
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  /* ---------- Header ---------- */
+  .header { position: sticky; top: 0; z-index: 100; background: rgba(12,15,20,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+  .logo { font-weight: 700; font-size: 1.15rem; color: var(--text); letter-spacing: -.02em; }
+  .logo:hover { color: var(--accent); }
+  .nav { display: flex; gap: 1.5rem; align-items: center; }
+  .nav a { color: var(--text-muted); font-size: .95rem; font-weight: 500; }
+  .nav a:hover { color: var(--text); }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--border); border-radius: 8px; width: 2.5rem; height: 2.5rem; cursor: pointer; padding: 0; align-items: center; justify-content: center; }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content: ''; display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle span { position: relative; }
+  .nav-toggle span::before { position: absolute; top: -6px; }
+  .nav-toggle span::after { position: absolute; top: 6px; }
+  .nav-toggle[aria-expanded="true"] span { background: transparent; }
+  .nav-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-block: 6rem 4rem; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%); }
+  .hero::after { content: ''; position: absolute; inset: -30% 30% auto -10%; height: 360px; background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 28%, transparent), transparent); filter: blur(20px); pointer-events: none; opacity: .55; }
+  .hero-inner { max-width: 40rem; position: relative; }
+  .hero-label { font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin: 0 0 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; margin: 0 0 .5rem; letter-spacing: -.03em; line-height: 1.1; }
+  .hero-title { font-size: 1.25rem; color: var(--text-muted); margin: 0 0 1.25rem; font-weight: 500; }
+  .hero-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0 0 2rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 2.25rem; color: var(--text-muted); font-size: .9rem; }
+  .hero-meta strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- Filters ---------- */
+  .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; }
+  .filter-chip { padding: .35rem .85rem; font-size: .85rem; font-weight: 500; border-radius: 999px; background: var(--bg-elevated); color: var(--text-muted); border: 1px solid var(--border); cursor: pointer; font-family: inherit; transition: all .15s ease; }
+  .filter-chip:hover { color: var(--text); border-color: var(--accent); }
+  .filter-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #0c0f14; }
+
+  /* ---------- Project grid ---------- */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .card { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; color: inherit; height: 100%; transition: border-color .2s ease, transform .2s ease; }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); color: inherit; }
+  .card.is-hidden { display: none; }
+  .card-image { aspect-ratio: 16 / 9; position: relative; overflow: hidden; background: var(--bg-elevated); border-bottom: 1px solid var(--border); }
+  .card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+  .card:hover .card-image img { transform: scale(1.03); }
+  /* square logos (no wide artwork) are contained on the surface instead of cropped */
+  .card-image--contain { display: grid; place-items: center; background: var(--bg); }
+  .card-image--contain img { width: auto; height: 70%; object-fit: contain; }
+  .card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .card-body h3 { margin: 0 0 .35rem; font-size: 1.2rem; font-weight: 600; }
+  .tagline { margin: 0 0 .5rem; font-size: .9rem; color: var(--accent); font-weight: 500; }
+  .description { margin: 0 0 1rem; font-size: .9rem; color: var(--text-muted); flex: 1; line-height: 1.5; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .card-links { display: flex; gap: 1rem; margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--border); font-size: .82rem; font-weight: 500; }
+  .card-links a { color: var(--text-muted); }
+  .card-links a:hover { color: var(--accent); }
+  .empty-state { color: var(--text-muted); padding: 2rem 0; display: none; }
+
+  /* ---------- About / CV ---------- */
+  .cv-section { background: var(--bg-elevated); }
+  .cv-card { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2.5rem; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+  .summary { color: var(--text-muted); margin: 0 0 1.25rem; font-size: 1.05rem; line-height: 1.7; }
+  .lang-list { display: flex; flex-direction: column; gap: .5rem; margin: 0 0 1.5rem; padding: 0; list-style: none; }
+  .lang-list li { display: flex; justify-content: space-between; font-size: .92rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+  .lang-list li:last-child { border-bottom: 0; }
+  .lang-list .lvl { color: var(--text-muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .skill-group { margin-bottom: 1.25rem; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group h4 { margin: 0 0 .5rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 500; }
+
+  /* parcours: two-column layout (timeline + aside) */
+  .cv-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+  .cv-main .summary { margin-bottom: 2rem; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+  .tl-item { position: relative; padding: 0 0 1.5rem 1.75rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: 0 0 .6rem; }
+  .chip-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); font-weight: 600; margin-right: .15rem; }
+  .chip { display: inline-block; padding: .18rem .55rem; font-size: .8rem; border-radius: 6px; background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
+  .tl-item::before { content: ''; position: absolute; left: 1px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg-elevated); border: 2px solid var(--accent); }
+  .tl-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; }
+  .tl-head h3 { margin: 0; font-size: 1.15rem; font-weight: 600; }
+  .tl-loc { font-size: .82rem; font-weight: 500; color: var(--text-muted); }
+  .tl-period { font-size: .82rem; color: var(--accent); font-weight: 500; white-space: nowrap; }
+  .tl-tagline { margin: .15rem 0 .6rem; font-size: .85rem; color: var(--text-muted); }
+  .tl-role { margin: 0 0 .6rem; font-size: .92rem; line-height: 1.55; color: var(--text); }
+  .tl-clients { margin: 0 0 .75rem; font-size: .88rem; line-height: 1.6; color: var(--text-muted); }
+  .tl-clients strong { color: var(--text); font-weight: 600; }
+  .tl-clients-label { display: inline-block; margin-right: .4rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); font-weight: 600; }
+
+  .cv-aside { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; position: sticky; top: 5rem; }
+  .cv-block { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+  .cv-block h4 { margin: 0 0 .6rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 500; }
+  .cv-block-line { margin: 0; font-size: .92rem; line-height: 1.55; }
+  .cv-block .muted, .muted { color: var(--text-muted); font-size: .85rem; }
+  .cv-aside .actions { margin-top: 1.5rem; }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--bg-elevated); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  /* ---------- Footer ---------- */
+  .footer { border-top: 1px solid var(--border); padding-block: 2rem; margin-top: 2rem; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer p { margin: 0; color: var(--text-muted); font-size: .9rem; }
+  .footer-links { display: flex; gap: 1.25rem; }
+  .footer-links a { font-size: .9rem; color: var(--text-muted); }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 920px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .cv-card { grid-template-columns: 1fr; gap: 1.75rem; }
+    .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cv-aside { position: static; }
+  }
+  @media (max-width: 680px) {
+    .nav-toggle { display: inline-flex; }
+    .nav {
+      position: absolute; top: 4rem; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: rgba(12,15,20,.97); border-bottom: 1px solid var(--border);
+      padding: .5rem 0; display: none;
+    }
+    .nav.open { display: flex; }
+    .nav a { padding: .85rem 1rem; width: min(100% - 2rem, var(--max-width)); margin-inline: auto; }
+    .grid { grid-template-columns: 1fr; }
+    .section { padding-block: 3rem; }
+    .hero { padding-block: 4.5rem 3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Ludovic Valente</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu"><span></span></button>
+      <nav class="nav" id="primary-nav" aria-label="Navigation principale">
+        <a href="#projets">Projets</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-label">Portfolio</p>
+        <h1>Ludovic Valente</h1>
+        <p class="hero-title">Ingénieur logiciel fullstack · SFEIR Luxembourg</p>
+        <p class="hero-desc">Développeur senior fullstack, architecte IT, tech lead et formateur. Focalisé sur l’architecture moderne autour des besoins web et mobiles — je conçois des applications avec des technologies émergentes en m’appuyant sur une architecture efficace.</p>
+        <div class="hero-actions">
+          <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+          <a href="https://ludovicvalente.geoking.fr" class="btn" target="_blank" rel="noopener noreferrer">Mon CV</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong>25 ans</strong> d’expérience</span>
+          <span><strong>Java</strong> · SpringBoot · Kotlin · Node.js · VueJs</span>
+          <span>📍 Luxembourg</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section class="section" id="projets">
+      <div class="container">
+        <h2 class="section-title">Projets</h2>
+        <p class="section-subtitle">Applications et outils que j’ai conçus</p>
+
+        <div class="filters" role="group" aria-label="Filtrer les projets par technologie">
+          <button class="filter-chip" data-filter="all" aria-pressed="true">Tous</button>
+          <button class="filter-chip" data-filter="Android" aria-pressed="false">Android</button>
+          <button class="filter-chip" data-filter="Android Auto" aria-pressed="false">Android Auto</button>
+          <button class="filter-chip" data-filter="Compose" aria-pressed="false">Compose</button>
+          <button class="filter-chip" data-filter="Web" aria-pressed="false">Web</button>
+          <button class="filter-chip" data-filter="IA" aria-pressed="false">IA</button>
+        </div>
+
+        <div class="grid" id="project-grid">
+          <!-- Scora -->
+          <a class="card reveal" href="https://scorawatch.com" target="_blank" rel="noopener noreferrer" data-tags="Android,Kotlin,Compose,Wear OS">
+            <div class="card-image card-image--contain"><img src="assets/projects/scora.png" alt="Scora sur montre connectée — affichage du score de tennis" width="377" height="377" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Scora</h3>
+              <p class="tagline">Score de tennis multi-plateforme</p>
+              <p class="description">Application Android de comptage et d’affichage des scores de tennis (jeux, sets, tie-breaks), avec une version dédiée à la montre connectée Wear OS.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Compose</span><span class="tag">Wear OS</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+          <!-- Gaston -->
+          <a class="card reveal" href="https://gaston.geoking.fr" target="_blank" rel="noopener noreferrer" data-tags="Android,Kotlin,Compose,Android Auto">
+            <div class="card-image"><img src="assets/projects/gaston.png" alt="Visuel de l’application Gaston" width="1024" height="500" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Gaston</h3>
+              <p class="tagline">Carburant &amp; recharge EV en direct</p>
+              <p class="description">Trouve les meilleurs prix de carburant, les bornes de recharge électrique et les haltes le long de l’itinéraire — sur le téléphone et dans la voiture via Android Auto.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android Auto</span><span class="tag">MapLibre</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+          <!-- Vincent -->
+          <a class="card reveal" href="https://vincent.geoking.fr" target="_blank" rel="noopener noreferrer" data-tags="Android,Kotlin,Compose,IA">
+            <div class="card-image"><img src="assets/projects/vincent.png" alt="Visuel de l’application Vincent" width="1024" height="500" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Vincent</h3>
+              <p class="tagline">Gérez votre cave à vin</p>
+              <p class="description">Inventorie et range vos bouteilles par scan, photo, code-barres ou dictée vocale : l’IA reconnaît l’étiquette, estime le prix et suggère des accords mets-vin sur un plan visuel de cave.</p>
+              <div class="tags"><span class="tag">Kotlin Multiplatform</span><span class="tag">Compose</span><span class="tag">IA</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+          <!-- Julius -->
+          <a class="card reveal" href="https://github.com/ludoo0d0a/julius" target="_blank" rel="noopener noreferrer" data-tags="Android,Kotlin,Compose,Android Auto,IA">
+            <div class="card-image"><img src="assets/projects/julius.png" alt="Visuel de l’application Julius" width="1024" height="500" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Julius</h3>
+              <p class="tagline">Assistant vocal IA, Android &amp; Auto</p>
+              <p class="description">Assistant vocal mains-libres pour Android et Android Auto, branché sur plusieurs moteurs d’IA (Gemini, OpenAI, Perplexity) ou un mode embarqué hors-ligne.</p>
+              <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android Auto</span><span class="tag">IA</span></div>
+              <div class="card-links"><span>Voir sur GitHub →</span></div>
+            </div>
+          </a>
+          <!-- Telma -->
+          <a class="card reveal" href="https://telma.geoking.fr" target="_blank" rel="noopener noreferrer" data-tags="Web,React,TypeScript">
+            <div class="card-image card-image--contain"><img src="assets/projects/telma.png" alt="Logo de l’application Telma" width="512" height="512" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Telma</h3>
+              <p class="tagline">Horaires SNCF en temps réel</p>
+              <p class="description">Application web pour consulter les horaires de train SNCF en temps réel : gares, trajets, départs et arrivées, avec carte interactive.</p>
+              <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">TypeScript</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+          <!-- MyTime -->
+          <a class="card reveal" href="https://mytime-hr7a.onrender.com" target="_blank" rel="noopener noreferrer" data-tags="Web,React,TypeScript,IA">
+            <div class="card-image"><img src="assets/projects/mytime.png" alt="Visuel de l’application MyTime" width="1280" height="720" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>MyTime</h3>
+              <p class="tagline">Emploi du temps scolaire intelligent</p>
+              <p class="description">Application web de gestion d’emplois du temps scolaires : un solveur de contraintes assisté par IA génère et ajuste les horaires, avec verrouillage manuel des créneaux.</p>
+              <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">IA</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+          <!-- Resume -->
+          <a class="card reveal" href="https://ludovicvalente.geoking.fr" target="_blank" rel="noopener noreferrer" data-tags="Web,Node.js">
+            <div class="card-image"><img src="assets/projects/resume.svg" alt="Aperçu du projet Resume" width="640" height="360" loading="lazy" /></div>
+            <div class="card-body">
+              <h3>Resume</h3>
+              <p class="tagline">CV multilingue depuis un JSON</p>
+              <p class="description">Outil Node.js qui génère un CV en HTML, PDF et format Europass, en français et en anglais, à partir d’une seule source JSON (standard JSON Resume).</p>
+              <div class="tags"><span class="tag">Node.js</span><span class="tag">Handlebars</span><span class="tag">i18n</span></div>
+              <div class="card-links"><span>Voir la démo →</span></div>
+            </div>
+          </a>
+        </div>
+        <p class="empty-state" id="empty-state">Aucun projet ne correspond à ce filtre.</p>
+      </div>
+    </section>
+
+    <!-- PARCOURS / À PROPOS -->
+    <section class="section cv-section" id="parcours">
+      <div class="container">
+        <h2 class="section-title">Parcours</h2>
+        <p class="section-subtitle">25 ans d’ingénierie logicielle — des institutions européennes à la finance luxembourgeoise</p>
+        <div class="cv-grid reveal">
+          <div class="cv-main">
+            <p class="summary">Développeur senior fullstack, architecte IT, formateur VueJs, tech lead et développeur Flutter/Android. Je crée des applications modernes avec des technologies émergentes, en m’appuyant sur une architecture efficace.</p>
+
+            <ol class="timeline">
+              <li class="tl-item">
+                <div class="tl-head">
+                  <h3>SFEIR <span class="tl-loc">Luxembourg</span></h3>
+                  <span class="tl-period">2017 — présent</span>
+                </div>
+                <p class="tl-tagline">Ingénieur fullstack, puis Engineering manager — architecture &amp; développement</p>
+                <div class="chip-row"><span class="chip-label">Clients</span><span class="chip">BIL</span><span class="chip">Société Générale</span><span class="chip">Temenos</span><span class="chip">Foyer</span><span class="chip">Fundsquare</span><span class="chip">Bourse de Luxembourg</span><span class="chip">STATEC</span></div>
+                <div class="tags"><span class="tag">Java</span><span class="tag">SpringBoot</span><span class="tag">Kafka</span><span class="tag">Microservices</span><span class="tag">Kubernetes</span><span class="tag">Cloud</span></div>
+              </li>
+              <li class="tl-item">
+                <div class="tl-head">
+                  <h3>SOGETI <span class="tl-loc">Luxembourg</span></h3>
+                  <span class="tl-period">2001 — 2017</span>
+                </div>
+                <p class="tl-tagline">Ingénieur fullstack — institutions européennes &amp; nationales</p>
+                <div class="chip-row"><span class="chip-label">Clients</span><span class="chip">Parlement européen</span><span class="chip">Cour de justice européenne</span><span class="chip">Bibliothèque nationale du Luxembourg</span><span class="chip">STATEC</span><span class="chip">Société Générale Bank &amp; Trust</span><span class="chip">Editus</span></div>
+                <div class="tags"><span class="tag">Java / J2EE</span><span class="tag">Spring</span><span class="tag">ElasticSearch</span><span class="tag">Angular</span><span class="tag">ExtJs</span><span class="tag">Android</span></div>
+              </li>
+            </ol>
+          </div>
+
+          <aside class="cv-aside">
+            <div class="skill-group">
+              <h4>Frontend</h4>
+              <div class="tags"><span class="tag">React</span><span class="tag">Angular</span><span class="tag">VueJs</span><span class="tag">TypeScript</span><span class="tag">Redux</span><span class="tag">Figma</span></div>
+            </div>
+            <div class="skill-group">
+              <h4>Backend</h4>
+              <div class="tags"><span class="tag">Java</span><span class="tag">SpringBoot</span><span class="tag">Node.js</span><span class="tag">Kotlin</span><span class="tag">ElasticSearch</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span></div>
+            </div>
+            <div class="skill-group">
+              <h4>Mobile</h4>
+              <div class="tags"><span class="tag">Android / Compose / KMP</span><span class="tag">Flutter</span><span class="tag">iOS / Swift</span><span class="tag">Capacitor</span></div>
+            </div>
+            <div class="skill-group">
+              <h4>Cloud &amp; CI/CD</h4>
+              <div class="tags"><span class="tag">AWS</span><span class="tag">Azure / AKS</span><span class="tag">GCP</span><span class="tag">Kubernetes</span><span class="tag">GitHub Actions</span><span class="tag">ArgoCD</span></div>
+            </div>
+            <div class="cv-block">
+              <h4>Formation</h4>
+              <p class="cv-block-line"><strong>École nationale d’Ingénieurs de Metz</strong><br />Diplôme d’ingénieur — généraliste, spécialité mécanique<br /><span class="muted">1995 — 2000</span></p>
+            </div>
+            <div class="cv-block">
+              <h4>Langues</h4>
+              <ul class="lang-list">
+                <li><span>Français</span><span class="lvl">Langue maternelle</span></li>
+                <li><span>Anglais</span><span class="lvl">Courant</span></li>
+              </ul>
+            </div>
+            <div class="cv-block">
+              <h4>Centres d’intérêt</h4>
+              <div class="tags"><span class="tag">Geocaching</span><span class="tag">Tennis</span><span class="tag">Randonnée</span><span class="tag">Handball</span><span class="tag">Guitare</span><span class="tag">Piano</span></div>
+            </div>
+            <div class="actions">
+              <a href="https://ludovicvalente.geoking.fr" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Voir mon CV</a>
+              <a href="https://ludovicvalente.geoking.fr/pdf/resume-fr.pdf" class="btn" target="_blank" rel="noopener noreferrer">CV en PDF</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Discutons de votre prochain projet</p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/ludovicvalente/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/ludoo0d0a" class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Ludovic Valente</p>
+      <div class="footer-links">
+        <a href="https://github.com/ludoo0d0a" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/ludovicvalente/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('primary-nav');
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Project filter
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.filter-chip'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#project-grid .card'));
+    var emptyState = document.getElementById('empty-state');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+        chip.setAttribute('aria-pressed', 'true');
+        var filter = chip.getAttribute('data-filter');
+        var visible = 0;
+        cards.forEach(function (card) {
+          var tags = (card.getAttribute('data-tags') || '').split(',');
+          var show = filter === 'all' || tags.indexOf(filter) !== -1;
+          card.classList.toggle('is-hidden', !show);
+          if (show) visible++;
+        });
+        emptyState.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+
+    // Scroll reveal
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+  </script>
+</body>
+</html>
