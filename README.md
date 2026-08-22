@@ -4,7 +4,7 @@ Site portfolio Astro (projets personnels + CV), prêt pour Netlify.
 
 ## Projets
 
-Scora, Gaton, Vincent, Julius, Telma, MyTime, Resume
+Scora, Gaston, Vincent, Julius, Telma, MyTime, Resume, Logbook Creator
 
 ## Développement
 
