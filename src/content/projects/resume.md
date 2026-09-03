@@ -9,7 +9,7 @@ links:
   github: https://github.com/ludoo0d0a/resume
 image: /assets/projects/resume.svg
 featured: true
-order: 7
+order: 8
 ---
 
 ## Contexte
