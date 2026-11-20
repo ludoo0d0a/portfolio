@@ -1,6 +1,6 @@
 # Portfolio — Ludovic
 
-Site portfolio Astro (projets personnels + CV), prêt pour Netlify.
+Site portfolio Astro (projets personnels + CV), déployé sur Cloudflare Pages.
 
 ## Projets
 
@@ -23,14 +23,15 @@ npm run preview
 | `src/content/projects/*.md` | Fiches projet (texte, tags, liens) |
 | `astro.config.mjs` | URL du site (`https://portfolio.geoking.fr`) pour le sitemap |
 
-## Déploiement Netlify
+## Déploiement
 
-1. Pousser ce repo sur GitHub/GitLab
-2. Netlify → **Add new site** → Import from Git
-3. Build command : `npm run build`
-4. Publish directory : `dist`
+Push sur `main` → GitHub Actions (`.github/workflows/deploy.yml`) build Astro et publie sur **Cloudflare Pages** (`portfolio` → https://portfolio.geoking.fr).
 
-La config est déjà dans `netlify.toml`.
+Secrets requis : `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
+
+Déclenchement manuel : Actions → Deploy → Run workflow.
+
+`netlify.toml` est conservé en secours local uniquement.
 
 ## Structure
 
