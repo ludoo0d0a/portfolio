@@ -35,6 +35,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4"
+          # Pin: wrangler@4 latest fails Pages with "Failed to publish your Function"
+          wranglerVersion: "4.40.0"
           command: pages deploy dist --project-name=portfolio --branch=main --commit-dirty=true
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
