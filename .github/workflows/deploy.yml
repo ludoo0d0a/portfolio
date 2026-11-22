@@ -1,4 +1,4 @@
-# Build Astro → Cloudflare Pages (portfolio.geoking.fr)
+# Build Astro → Cloudflare Pages (www.geoking.fr / geoking.fr)
 name: Deploy
 
 on:

@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://portfolio.geoking.fr',
+	site: 'https://www.geoking.fr',
 	integrations: [sitemap()],
 });
